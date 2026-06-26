@@ -1,413 +1,394 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Orlin Stefanov | Full-Stack Developer</title>
-
-  <meta
-    name="description"
-    content="Portfolio of Orlin Stefanov, a full-stack developer specialising in C#, .NET, Angular, PostgreSQL, and scalable backend systems."
-  >
-
-  <meta name="author" content="Orlin Stefanov">
-  <meta name="theme-color" content="#0a0a0f">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Orlin Stefanov | Full-Stack Developer">
-  <meta property="og:description" content="Full-stack developer specialising in backend systems, RESTful APIs, Angular, and PostgreSQL.">
-  <meta property="og:site_name" content="Orlin Stefanov Portfolio">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Orlin Stefanov | Full-Stack Developer">
-  <meta name="twitter:description" content="Full-stack developer specialising in backend systems, RESTful APIs, Angular, and PostgreSQL.">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orlin Stefanov — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.13);
+      --accent: #6c6fff;
+      --accent2: #a78bfa;
+      --accent3: #34d399;
+      --text: #f0f0ff;
+      --muted: #8888a8;
+      --tag-bg: rgba(108,111,255,0.13);
+      --tag-c: #a5a7ff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 6rem 2.5rem 5rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--accent3);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 1px;
+      background: var(--accent3);
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent2);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-top: 1.4rem;
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      margin-top: 2.4rem;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      border: 1px solid var(--border2);
+      transition: color 0.2s, transform 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn-ghost:hover { color: var(--text); transform: translateY(-1px); }
+
+    .section { padding: 4rem 2.5rem; max-width: 860px; margin: 0 auto; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(108,111,255,0.07), transparent);
+      pointer-events: none;
+    }
+    .project-card:hover {
+      border-color: rgba(108,111,255,0.35);
+      transform: translateY(-3px);
+    }
+    .project-card.featured { grid-column: 1 / -1; }
+    .project-card.featured::before {
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(52,211,153,0.07), transparent);
+    }
+    .project-card.featured:hover { border-color: rgba(52,211,153,0.35); }
+
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .project-card.featured {
+        grid-column: 1;
+      }
+    }
+
+    .project-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+    .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .project-tagline {
+      font-size: 0.82rem;
+      color: var(--accent3);
+      font-weight: 500;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.85rem;
+    }
+    .project-highlights { margin-bottom: 1.2rem; }
+    .project-highlights li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+      line-height: 1.55;
+      list-style: none;
+    }
+    .project-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.75rem;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.2rem; }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      background: var(--tag-bg);
+      color: var(--tag-c);
+      padding: 3px 9px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+    .tag.green { background: rgba(52,211,153,0.1); color: #6ee7b7; }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border: 1px solid rgba(108,111,255,0.25);
+      border-radius: 7px;
+      width: fit-content;
+      transition: background 0.2s, border-color 0.2s;
+      margin-top: auto;
+    }
+    .project-link:hover { background: rgba(108,111,255,0.1); border-color: rgba(108,111,255,0.45); }
+    .project-link.green { color: var(--accent3); border-color: rgba(52,211,153,0.25); }
+    .project-link.green:hover { background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.45); }
+
+    .achievement-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .achievement-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .achievement-content {
+      flex: 1;
+    }
+    .achievement-title {
+      font-weight: 500;
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+    .achievement-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .skill-group-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-pill { font-size: 12px; color: var(--text); opacity: 0.85; }
+    .skill-pill::after { content: ' ·'; color: var(--border2); }
+    .skill-pill:last-child::after { display: none; }
+
+    .exp-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      gap: 1.2rem;
+    }
+    .exp-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent3);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .exp-company { font-weight: 500; font-size: 0.95rem; color: var(--text); }
+    .exp-role { font-size: 0.85rem; color: var(--accent); margin: 1px 0 4px; }
+    .exp-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 0.6rem; }
+    .exp-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.2rem; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero { animation: fadeUp 0.55s ease both; }
+    .section { animation: fadeUp 0.55s ease both; }
+
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured, .project-card.wide { grid-column: 1; }
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero { padding: 4rem 1.2rem 3rem; }
+      .section { padding: 3rem 1.2rem; }
+    }
+  </style>
 </head>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap');
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --surface2: #1a1a26;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.13);
-    --accent: #6c6fff;
-    --accent2: #a78bfa;
-    --accent3: #34d399;
-    --text: #f0f0ff;
-    --muted: #8888a8;
-    --tag-bg: rgba(108,111,255,0.13);
-    --tag-c: #a5a7ff;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2.5rem;
-    height: 56px;
-    background: rgba(10,10,15,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    font-weight: 500;
-  }
-  .nav-links { display: flex; gap: 2rem; }
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-    letter-spacing: 0.04em;
-  }
-  .nav-links a:hover { color: var(--text); }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 6rem 2.5rem 5rem;
-    max-width: 860px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent3);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 24px; height: 1px;
-    background: var(--accent3);
-  }
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.8rem, 7vw, 4.5rem);
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-  h1 em {
-    font-style: italic;
-    color: var(--accent2);
-  }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    margin-top: 1.4rem;
-    max-width: 520px;
-    font-weight: 300;
-    line-height: 1.7;
-  }
-  .hero-actions {
-    margin-top: 2.4rem;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: opacity 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-ghost {
-    display: inline-flex; align-items: center; gap: 8px;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 10px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 400;
-    border: 1px solid var(--border2);
-    transition: color 0.2s, border-color 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
-  }
-  .btn-ghost:hover { color: var(--text); border-color: var(--border2); transform: translateY(-1px); }
-
-  /* ── DIVIDER ── */
-  .section { padding: 4rem 2.5rem; max-width: 860px; margin: 0 auto; }
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── PROJECTS ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.6rem;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.25s, transform 0.2s;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-  }
-  .project-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 14px;
-    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(108,111,255,0.07), transparent);
-    pointer-events: none;
-  }
-  .project-card:hover {
-    border-color: rgba(108,111,255,0.35);
-    transform: translateY(-3px);
-  }
-  .project-card.featured {
-    grid-column: 1 / -1;
-  }
-  .project-card.featured::before {
-    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(52,211,153,0.07), transparent);
-  }
-  .project-card.featured:hover {
-    border-color: rgba(52,211,153,0.35);
-  }
-  .project-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.1em;
-  }
-  .project-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-  }
-  .project-tagline {
-    font-size: 0.82rem;
-    color: var(--accent3);
-    font-weight: 500;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.85rem;
-  }
-  .project-desc {
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.65;
-    flex: 1;
-    margin-bottom: 1.2rem;
-  }
-  .project-highlights {
-    margin-bottom: 1.2rem;
-  }
-  .project-highlights li {
-    font-size: 0.82rem;
-    color: var(--muted);
-    padding-left: 1rem;
-    position: relative;
-    margin-bottom: 0.35rem;
-    line-height: 1.55;
-    list-style: none;
-  }
-  .project-highlights li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 0.75rem;
-  }
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 1.2rem;
-  }
-  .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    background: var(--tag-bg);
-    color: var(--tag-c);
-    padding: 3px 9px;
-    border-radius: 5px;
-    letter-spacing: 0.04em;
-  }
-  .tag.green {
-    background: rgba(52,211,153,0.1);
-    color: #6ee7b7;
-  }
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    color: var(--accent);
-    text-decoration: none;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.05em;
-    padding: 6px 14px;
-    border: 1px solid rgba(108,111,255,0.25);
-    border-radius: 7px;
-    width: fit-content;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .project-link:hover {
-    background: rgba(108,111,255,0.1);
-    border-color: rgba(108,111,255,0.45);
-  }
-  .project-link.green {
-    color: var(--accent3);
-    border-color: rgba(52,211,153,0.25);
-  }
-  .project-link.green:hover {
-    background: rgba(52,211,153,0.08);
-    border-color: rgba(52,211,153,0.45);
-  }
-
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-  }
-  .skill-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.1rem 1.3rem;
-  }
-  .skill-group-name {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.7rem;
-  }
-  .skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .skill-pill {
-    font-size: 12px;
-    color: var(--text);
-    font-weight: 400;
-    opacity: 0.85;
-  }
-  .skill-pill::after { content: ' ·'; color: var(--border2); }
-  .skill-pill:last-child::after { display: none; }
-
-  /* ── EXPERIENCE ── */
-  .exp-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.4rem 1.6rem;
-    display: flex;
-    gap: 1.2rem;
-  }
-  .exp-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent3);
-    margin-top: 6px;
-    flex-shrink: 0;
-  }
-  .exp-company { font-weight: 500; font-size: 0.95rem; color: var(--text); }
-  .exp-role { font-size: 0.85rem; color: var(--accent); font-weight: 400; margin: 1px 0 4px; }
-  .exp-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 0.6rem; }
-  .exp-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
-
-  /* ── CONTACT ── */
-  .contact-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 1.2rem;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 2.5rem;
-    text-align: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .hero, .section { animation: fadeUp 0.55s ease both; }
-  .section:nth-child(2) { animation-delay: 0.1s; }
-  .section:nth-child(3) { animation-delay: 0.18s; }
-  .section:nth-child(4) { animation-delay: 0.24s; }
-</style>
+<body>
 
 <nav>
   <span class="nav-logo">OS.</span>
   <div class="nav-links">
     <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
@@ -432,22 +413,18 @@
 
 <div class="section" id="projects">
   <div class="section-label">Projects</div>
-
   <div class="projects-grid">
 
-    <!-- Featured: TeamUp -->
     <div class="project-card featured">
       <div class="project-num">01 — Current</div>
       <div class="project-name">TeamUp</div>
       <div class="project-tagline">Team Collaboration & Gamified Task Platform</div>
-      <div class="project-highlights">
-        <ul>
-          <li>Discord-like real-time chat with SignalR WebSockets inside team workspaces</li>
-          <li>Productivity leaderboard that gamifies task completion across teams</li>
-          <li>Scalable .NET + PostgreSQL backend with complex user/message/task relationships</li>
-          <li>Dynamic Angular frontend with real-time data updates and no page reloads</li>
-        </ul>
-      </div>
+      <ul class="project-highlights">
+        <li>Discord-like real-time chat with SignalR WebSockets inside team workspaces</li>
+        <li>Productivity leaderboard that gamifies task completion across teams</li>
+        <li>Scalable .NET + PostgreSQL backend with complex user/message/task relationships</li>
+        <li>Dynamic Angular frontend with real-time data updates and no page reloads</li>
+      </ul>
       <div class="tags">
         <span class="tag green">C#</span>
         <span class="tag green">.NET Core</span>
@@ -463,18 +440,15 @@
       </a>
     </div>
 
-    <!-- Mealer -->
     <div class="project-card">
       <div class="project-num">02</div>
       <div class="project-name">Mealer</div>
       <div class="project-tagline">Social Recipe Platform</div>
-      <div class="project-highlights">
-        <ul>
-          <li>Ingredient-based intelligent recipe filtering engine</li>
-          <li>Complex EF Core relational DB across ingredients, instructions & profiles</li>
-          <li>Responsive Angular + Bootstrap UI across all devices</li>
-        </ul>
-      </div>
+      <ul class="project-highlights">
+        <li>Ingredient-based intelligent recipe filtering engine</li>
+        <li>Complex EF Core relational DB across ingredients, instructions & profiles</li>
+        <li>Responsive Angular + Bootstrap UI across all devices</li>
+      </ul>
       <div class="tags">
         <span class="tag">C#</span>
         <span class="tag">ASP.NET Core</span>
@@ -488,18 +462,15 @@
       </a>
     </div>
 
-    <!-- TaskManager -->
     <div class="project-card">
       <div class="project-num">03</div>
       <div class="project-name">TaskManager</div>
       <div class="project-tagline">Project & Team Collaboration</div>
-      <div class="project-highlights">
-        <ul>
-          <li>Role-Based Access Control (RBAC) permissions system</li>
-          <li>Robust REST API backend with EF Core + PostgreSQL</li>
-          <li>Dynamic Angular UI with smooth, intuitive UX</li>
-        </ul>
-      </div>
+      <ul class="project-highlights">
+        <li>Role-Based Access Control (RBAC) permissions system</li>
+        <li>Robust REST API backend with EF Core + PostgreSQL</li>
+        <li>Dynamic Angular UI with smooth, intuitive UX</li>
+      </ul>
       <div class="tags">
         <span class="tag">C#</span>
         <span class="tag">.NET Core</span>
@@ -514,23 +485,19 @@
       </a>
     </div>
 
-    <!-- Village Defender -->
-    <div class="project-card" style="grid-column: 1 / -1;">
-      <div class="project-num">04 — Game Dev</div>
+    <div class="project-card">
+      <div class="project-num">04</div>
       <div class="project-name">Village Defender</div>
-      <div class="project-tagline">3D Unity Survival Action Game</div>
-      <div class="project-highlights">
-        <ul>
-          <li>12-wave progressive combat system with AI-driven enemy behaviour</li>
-          <li>Inventory & economy system — buy weapons and resources via in-game currency</li>
-          <li>Balanced weapon stat system with unique damage and range per weapon</li>
-          <li>Navigation Mesh for intelligent enemy pathfinding and dynamic difficulty scaling</li>
-        </ul>
-      </div>
+      <div class="project-tagline">3D Unity Survival Game</div>
+      <ul class="project-highlights">
+        <li>12-wave progressive combat system with AI-driven enemy behaviour</li>
+        <li>Inventory & economy system with in-game currency</li>
+        <li>Balanced weapon stat system with unique damage/range</li>
+        <li>Navigation Mesh for intelligent pathfinding and dynamic difficulty</li>
+      </ul>
       <div class="tags">
         <span class="tag">Unity</span>
         <span class="tag">C#</span>
-        <span class="tag">Unity Physics</span>
         <span class="tag">NavMesh</span>
         <span class="tag">Game AI</span>
       </div>
@@ -540,6 +507,88 @@
       </a>
     </div>
 
+    <div class="project-card">
+      <div class="project-num">05</div>
+      <div class="project-name">Hero of Hammerwatch</div>
+      <div class="project-tagline">2D Action Game & Game Server</div>
+      <ul class="project-highlights">
+        <li>2D top-down action game with enemy-wave system and player upgrades</li>
+        <li>Dedicated backend server managing user authentication & cloud storage</li>
+        <li>Server-side synchronization for game maps and player state persistence</li>
+        <li>Full-stack game infrastructure from client to cloud backend</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">C#</span>
+        <span class="tag">Unity</span>
+        <span class="tag">.NET</span>
+        <span class="tag">Game Dev</span>
+      </div>
+      <a class="project-link" href="https://github.com/Spinosavarous/Hero-Of-Hammerwatch" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        View on GitHub →
+      </a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">06 — Internship</div>
+      <div class="project-name">Nemetschek Event Manager</div>
+      <div class="project-tagline">Enterprise Event Management API</div>
+      <ul class="project-highlights">
+        <li>Scalable RESTful backend services for event organization and user coordination</li>
+        <li>Relational database models with Entity Framework Core</li>
+        <li>Professional-grade architecture following agile practices</li>
+        <li>Collaborative team development with version control</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">C#</span>
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">EF Core</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">REST API</span>
+      </div>
+      <a class="project-link" href="https://github.com/Speed-IT-Up-School-Edition-2025/NemetschekEventManagerBackend" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        View on GitHub →
+      </a>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+
+<div class="section" id="achievements">
+  <div class="section-label">Achievements</div>
+  <div class="achievements-grid">
+    <div class="achievement-item">
+      <div class="achievement-icon">🏆</div>
+      <div class="achievement-content">
+        <div class="achievement-title">1st Place Team Award</div>
+        <div class="achievement-desc">Digital Technology & Programming Festival 2023</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="achievement-icon">🏆</div>
+      <div class="achievement-content">
+        <div class="achievement-title">3rd Place – IGNITE Hackathon 2026</div>
+        <div class="achievement-desc">Team ABC – Competitive programming competition</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="achievement-icon">🎮</div>
+      <div class="achievement-content">
+        <div class="achievement-title">Telerik Academy Game Dev Program</div>
+        <div class="achievement-desc">4-year specialized training in game development</div>
+      </div>
+    </div>
+    <div class="achievement-item">
+      <div class="achievement-icon">🎓</div>
+      <div class="achievement-content">
+        <div class="achievement-title">Cambridge C1 Advanced (CAE)</div>
+        <div class="achievement-desc">Proficient English language certification</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -599,7 +648,7 @@
       <div>
         <div class="exp-company">Nemetschek Bulgaria</div>
         <div class="exp-role">Software Development Intern</div>
-        <div class="exp-date">Jul 2025 – Jul 2025 · Sofia, Bulgaria</div>
+        <div class="exp-date">Jul 2025 · Sofia, Bulgaria</div>
         <div class="exp-desc">Worked on a backend-oriented project within a dev team. Implemented user and event management features using C#, Entity Framework, and SQL Server. Gained hands-on experience with database operations and team-based workflows.</div>
       </div>
     </div>
@@ -609,7 +658,7 @@
         <div class="exp-company">СПГЕ "Джон Атанасов"</div>
         <div class="exp-role">Systems Programming · EQF Level 5</div>
         <div class="exp-date">Sep 2022 – Jul 2025 · Sofia, Bulgaria</div>
-        <div class="exp-desc">Specialised in systems programming. Alongside coursework, built and shipped multiple full-stack applications and a 3D Unity game.</div>
+        <div class="exp-desc">Specialised in systems programming. Alongside coursework, built and shipped multiple full-stack applications and a 3D Unity game. Holds a C1 Advanced Cambridge English certificate.</div>
       </div>
     </div>
   </div>
@@ -625,4 +674,7 @@
   </div>
 </div>
 
-<footer>· Orlin Stefanov · Sofia, Bulgaria ·</footer>
+<footer>Orlin Stefanov · Sofia, Bulgaria · 2025</footer>
+
+</body>
+</html>
