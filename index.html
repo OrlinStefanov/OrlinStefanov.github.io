@@ -1,765 +1,716 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orlin Stefanov — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Orlin Stefanov — Backend & Full-Stack Developer</title>
+<meta name="description" content="Orlin Stefanov — backend and full-stack developer in Sofia, Bulgaria. C#, .NET, Angular and PostgreSQL. Internships at Postbank, QuackStack and Nemetschek Bulgaria." />
+<meta name="author" content="Orlin Stefanov" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Orlin Stefanov — Backend & Full-Stack Developer" />
+<meta property="og:description" content="Backend and full-stack developer in Sofia, Bulgaria. C#, .NET, Angular, PostgreSQL." />
+<meta property="og:url" content="https://orlinstefanov.github.io/" />
+<meta name="theme-color" content="#0a0a0b" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0b'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23d8a24a' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --surface2: #1a1a26;
-      --border: rgba(255,255,255,0.07);
-      --border2: rgba(255,255,255,0.13);
-      --accent: #6c6fff;
-      --accent2: #a78bfa;
-      --accent3: #34d399;
-      --text: #f0f0ff;
-      --muted: #8888a8;
-      --tag-bg: rgba(108,111,255,0.13);
-      --tag-c: #a5a7ff;
-    }
+  :root {
+    --ink:        #0a0a0b;
+    --ink-2:      #101012;
+    --paper:      #edeae4;
+    --paper-dim:  #9b968c;
+    --paper-dimmer: #6f6b64;
+    --rule:       rgba(237,234,228,0.09);
+    --rule-2:     rgba(237,234,228,0.16);
+    --accent:     #d8a24a;
+    --accent-dim: rgba(216,162,74,0.14);
 
-    html { scroll-behavior: smooth; }
+    --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono:  'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    --gutter: clamp(1.25rem, 5vw, 5rem);
+    --measure: 1120px;
+  }
 
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2.5rem;
-      height: 56px;
-      background: rgba(10,10,15,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      font-weight: 500;
-    }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-      letter-spacing: 0.04em;
-    }
-    .nav-links a:hover { color: var(--text); }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
 
-    .hero {
-      padding: 6rem 2.5rem 5rem;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    .hero-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--accent3);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 24px; height: 1px;
-      background: var(--accent3);
-    }
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.8rem, 7vw, 4.5rem);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 0.3rem;
-    }
-    h1 em {
-      font-style: italic;
-      color: var(--accent2);
-    }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-top: 1.4rem;
-      max-width: 520px;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-    .hero-actions {
-      margin-top: 2.4rem;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      transition: opacity 0.2s, transform 0.15s;
-      letter-spacing: 0.02em;
-    }
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-size: 14px;
-      border: 1px solid var(--border2);
-      transition: color 0.2s, transform 0.15s;
-      letter-spacing: 0.02em;
-    }
-    .btn-ghost:hover { color: var(--text); transform: translateY(-1px); }
+  body {
+    font-family: var(--sans);
+    background: var(--ink);
+    color: var(--paper);
+    line-height: 1.65;
+    font-size: 15.5px;
+    font-weight: 300;
+    letter-spacing: 0.005em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-    .section { padding: 4rem 2.5rem; max-width: 860px; margin: 0 auto; }
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+  /* Paper grain — gives the flat dark a printed texture instead of a plastic one. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.6rem;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.25s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(108,111,255,0.07), transparent);
-      pointer-events: none;
-    }
-    .project-card:hover {
-      border-color: rgba(108,111,255,0.35);
-      transform: translateY(-3px);
-    }
-    .project-card.featured, .project-card.wide { grid-column: 1 / -1; }
-    .project-card.featured::before {
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(52,211,153,0.07), transparent);
-    }
-    .project-card.featured:hover { border-color: rgba(52,211,153,0.35); }
-    .project-card.pro::before {
-      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(167,139,250,0.07), transparent);
-    }
-    .project-card.pro:hover { border-color: rgba(167,139,250,0.35); }
-    .project-card.pro .project-tagline { color: var(--accent2); }
-    .project-card.pro .project-highlights li::before { color: var(--accent2); }
+  ::selection { background: var(--accent); color: var(--ink); }
 
-    @media (max-width: 900px) {
-      .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      }
-    }
+  a { color: inherit; }
 
-    @media (max-width: 600px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      .project-card.featured {
-        grid-column: 1;
-      }
-    }
+  .wrap { max-width: var(--measure); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
 
-    .project-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 0.8rem;
-      letter-spacing: 0.1em;
-    }
-    .project-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-    .project-tagline {
-      font-size: 0.82rem;
-      color: var(--accent3);
-      font-weight: 500;
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.85rem;
-    }
-    .project-highlights { margin-bottom: 1.2rem; }
-    .project-highlights li {
-      font-size: 0.82rem;
-      color: var(--muted);
-      padding-left: 1rem;
-      position: relative;
-      margin-bottom: 0.35rem;
-      line-height: 1.55;
-      list-style: none;
-    }
-    .project-highlights li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.75rem;
-    }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.2rem; }
-    .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      background: var(--tag-bg);
-      color: var(--tag-c);
-      padding: 3px 9px;
-      border-radius: 5px;
-      letter-spacing: 0.04em;
-    }
-    .tag.green { background: rgba(52,211,153,0.1); color: #6ee7b7; }
-    .tag.violet { background: rgba(167,139,250,0.12); color: #c4b5fd; }
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--accent);
-      text-decoration: none;
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.05em;
-      padding: 6px 14px;
-      border: 1px solid rgba(108,111,255,0.25);
-      border-radius: 7px;
-      width: fit-content;
-      transition: background 0.2s, border-color 0.2s;
-      margin-top: auto;
-    }
-    .project-link:hover { background: rgba(108,111,255,0.1); border-color: rgba(108,111,255,0.45); }
-    .project-link.green { color: var(--accent3); border-color: rgba(52,211,153,0.25); }
-    .project-link.green:hover { background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.45); }
-    .project-link.violet { color: var(--accent2); border-color: rgba(167,139,250,0.25); }
-    .project-link.violet:hover { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.45); }
+  /* ---------------- nav ---------------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,10,11,0.72);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s ease;
+  }
+  nav.stuck { border-bottom-color: var(--rule); }
+  .nav-inner {
+    max-width: var(--measure); margin: 0 auto;
+    padding: 0 var(--gutter);
+    height: 58px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .mark {
+    font-family: var(--mono); font-size: 12px; font-weight: 500;
+    letter-spacing: 0.14em; color: var(--paper);
+  }
+  .mark span { color: var(--accent); }
+  .nav-links { display: flex; gap: clamp(1rem, 3vw, 2.2rem); }
+  .nav-links a {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em;
+    color: var(--paper-dim); text-decoration: none;
+    transition: color 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--paper); }
+  @media (max-width: 620px) { .nav-links a:nth-child(n+4) { display: none; } }
 
-    .project-note {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      padding: 6px 0;
-      margin-top: auto;
-    }
+  /* ---------------- hero ---------------- */
+  .hero { padding: clamp(4.5rem, 13vh, 9rem) 0 clamp(3.5rem, 8vh, 6rem); position: relative; }
+  .hero::before {
+    content: '';
+    position: absolute; top: -30%; left: 50%; transform: translateX(-50%);
+    width: min(900px, 100%); height: 560px;
+    background: radial-gradient(ellipse at center, rgba(216,162,74,0.055), transparent 68%);
+    pointer-events: none; z-index: -1;
+  }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem;
+  }
+  .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--accent); opacity: 0.6; }
 
-    .achievement-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.2rem 1.4rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .achievement-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .achievement-content {
-      flex: 1;
-    }
-    .achievement-title {
-      font-weight: 500;
-      color: var(--text);
-      font-size: 0.95rem;
-      margin-bottom: 0.2rem;
-    }
-    .achievement-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 12px;
-    }
+  h1.name {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(3.4rem, 11.5vw, 8.2rem);
+    line-height: 0.92; letter-spacing: -0.022em;
+    margin-bottom: clamp(1.5rem, 3vw, 2.2rem);
+  }
+  h1.name em { font-style: italic; color: var(--accent); }
 
-    @media (max-width: 600px) {
-      .achievements-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-    }
-    .skill-group-name {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.7rem;
-    }
-    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-    .skill-pill { font-size: 12px; color: var(--text); opacity: 0.85; }
-    .skill-pill::after { content: ' ·'; color: var(--border2); }
-    .skill-pill:last-child::after { display: none; }
+  .lede {
+    font-size: clamp(1.02rem, 1.9vw, 1.3rem);
+    line-height: 1.62; color: var(--paper);
+    max-width: 34ch; font-weight: 300;
+  }
+  .lede strong { font-weight: 500; color: var(--paper); }
 
-    .exp-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.4rem 1.6rem;
-      display: flex;
-      gap: 1.2rem;
-    }
-    .exp-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent3);
-      margin-top: 6px;
-      flex-shrink: 0;
-    }
-    .exp-company { font-weight: 500; font-size: 0.95rem; color: var(--text); }
-    .exp-role { font-size: 0.85rem; color: var(--accent); margin: 1px 0 4px; }
-    .exp-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 0.6rem; }
-    .exp-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+  .hero-meta {
+    margin-top: clamp(2.4rem, 5vw, 3.6rem);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1.4rem 2rem;
+    border-top: 1px solid var(--rule); padding-top: 1.6rem;
+  }
+  .meta-k {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--paper-dimmer); margin-bottom: 0.45rem;
+  }
+  .meta-v { font-size: 14px; color: var(--paper); font-weight: 400; }
+  .meta-v a { text-decoration: none; border-bottom: 1px solid var(--rule-2); transition: border-color 0.25s, color 0.25s; }
+  .meta-v a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .avail { display: inline-flex; align-items: center; gap: 7px; }
+  .avail::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim);
+  }
 
-    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.2rem; }
+  /* ---------------- section chrome ---------------- */
+  section { padding: clamp(3.5rem, 9vh, 6.5rem) 0; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 1rem;
+    padding-bottom: 1.4rem; margin-bottom: clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .sec-title {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--paper);
+  }
+  .sec-count { font-family: var(--mono); font-size: 11px; color: var(--paper-dimmer); letter-spacing: 0.1em; }
+  .sec-note { margin-left: auto; font-size: 12.5px; color: var(--paper-dimmer); text-align: right; }
+  @media (max-width: 700px) { .sec-note { display: none; } }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 2.5rem;
-      text-align: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
+  /* ---------------- work rows ---------------- */
+  .work { display: flex; flex-direction: column; }
+  .row {
+    display: grid;
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 0 clamp(1.5rem, 4vw, 3.5rem);
+    padding: clamp(2.2rem, 5vw, 3.4rem) 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .row:first-child { padding-top: 0; }
+  .row:last-child { border-bottom: none; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero { animation: fadeUp 0.55s ease both; }
-    .section { animation: fadeUp 0.55s ease both; }
+  .row-aside { display: flex; flex-direction: column; gap: 0.5rem; }
+  .row-num {
+    font-family: var(--serif); font-size: 2.1rem; line-height: 1;
+    color: var(--accent); opacity: 0.85;
+  }
+  .row-when {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em;
+    color: var(--paper-dimmer); text-transform: uppercase;
+  }
+  .row-kind {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    color: var(--accent); text-transform: uppercase;
+  }
 
-    @media (max-width: 600px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .project-card.featured, .project-card.wide { grid-column: 1; }
-      nav { padding: 0 1.2rem; }
-      .nav-links { gap: 1.2rem; }
-      .hero { padding: 4rem 1.2rem 3rem; }
-      .section { padding: 3rem 1.2rem; }
+  .row-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.75rem, 4.2vw, 2.7rem);
+    line-height: 1.05; letter-spacing: -0.015em;
+    margin-bottom: 0.35rem;
+  }
+  .row-sub {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+    color: var(--paper-dim); margin-bottom: 1.3rem;
+  }
+  .row-points { list-style: none; margin-bottom: 1.5rem; max-width: 62ch; }
+  .row-points li {
+    position: relative; padding-left: 1.4rem; margin-bottom: 0.55rem;
+    font-size: 14.5px; color: var(--paper-dim); line-height: 1.6;
+  }
+  .row-points li::before {
+    content: ''; position: absolute; left: 0; top: 0.65em;
+    width: 8px; height: 1px; background: var(--accent); opacity: 0.75;
+  }
+  .row-points li strong { color: var(--paper); font-weight: 500; }
+
+  .stack-line {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em;
+    color: var(--paper-dimmer); margin-bottom: 1.4rem;
+    display: flex; flex-wrap: wrap; gap: 0.4rem 0.75rem;
+  }
+  .stack-line span::after { content: ' ·'; color: var(--rule-2); margin-left: 0.5rem; }
+  .stack-line span:last-child::after { content: ''; }
+
+  .row-link {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em;
+    color: var(--accent); text-decoration: none;
+    padding-bottom: 3px; border-bottom: 1px solid var(--accent-dim);
+    transition: border-color 0.3s ease, gap 0.3s ease;
+  }
+  .row-link:hover { border-bottom-color: var(--accent); gap: 0.85rem; }
+  .row-private {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em;
+    color: var(--paper-dimmer);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .row-private::before {
+    content: ''; width: 9px; height: 9px; border-radius: 2px;
+    border: 1px solid var(--paper-dimmer); opacity: 0.8;
+  }
+
+  .shot {
+    margin: 1.6rem 0 0;
+    border: 1px solid var(--rule-2); border-radius: 4px;
+    overflow: hidden; background: var(--ink-2);
+    max-width: 100%;
+  }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+    color: var(--paper-dimmer); padding: 0.7rem 0.9rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 700px) {
+    .row { grid-template-columns: 1fr; gap: 0; }
+    .row-aside {
+      flex-direction: row; align-items: baseline; gap: 0.85rem;
+      margin-bottom: 0.9rem; flex-wrap: wrap;
     }
-  </style>
+    .row-num { font-size: 1.45rem; }
+  }
+
+  /* ---------------- compact list ---------------- */
+  .also { display: flex; flex-direction: column; }
+  .also-item {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.4rem 1.5rem; align-items: baseline;
+    padding: 1.1rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .also-item:last-child { border-bottom: none; }
+  .also-name { font-size: 15px; color: var(--paper); font-weight: 400; }
+  .also-desc { grid-column: 1 / -1; font-size: 13.5px; color: var(--paper-dimmer); line-height: 1.55; }
+  .also-link {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    color: var(--paper-dim); text-decoration: none; white-space: nowrap;
+    transition: color 0.25s ease;
+  }
+  .also-link:hover { color: var(--accent); }
+
+  /* ---------------- timeline ---------------- */
+  .track { display: flex; flex-direction: column; }
+  .stop {
+    display: grid; grid-template-columns: 168px minmax(0, 1fr);
+    gap: 0 clamp(1.5rem, 4vw, 3.5rem);
+    padding: 1.7rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .stop:last-child { border-bottom: none; }
+  .stop-when {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    color: var(--paper-dimmer); padding-top: 0.25rem;
+  }
+  .stop-org { font-size: 16px; font-weight: 500; color: var(--paper); }
+  .stop-role { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; color: var(--accent); margin: 0.25rem 0 0.6rem; }
+  .stop-body { font-size: 14.5px; color: var(--paper-dim); max-width: 62ch; line-height: 1.62; }
+  @media (max-width: 700px) {
+    .stop { grid-template-columns: 1fr; gap: 0; }
+    .stop-when { padding-top: 0; margin-bottom: 0.5rem; }
+  }
+
+  /* ---------------- stack ---------------- */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(1.6rem, 4vw, 2.8rem); }
+  .kit-k {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--paper-dimmer);
+    padding-bottom: 0.7rem; margin-bottom: 0.85rem; border-bottom: 1px solid var(--rule);
+  }
+  .kit-v { font-size: 14px; color: var(--paper-dim); line-height: 1.9; }
+  .kit-v b { font-weight: 400; color: var(--paper); }
+
+  /* ---------------- recognition ---------------- */
+  .awards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .award { background: var(--ink); padding: 1.5rem 1.4rem; }
+  .award-rank {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+  }
+  .award-what { font-size: 14.5px; color: var(--paper); line-height: 1.5; margin-bottom: 0.3rem; }
+  .award-where { font-size: 12.5px; color: var(--paper-dimmer); }
+
+  /* ---------------- contact ---------------- */
+  #contact .wrap { padding-top: clamp(1rem, 3vw, 2rem); }
+  .cta {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2rem, 6.5vw, 4.2rem); line-height: 1.06;
+    letter-spacing: -0.02em; margin-bottom: 2rem; max-width: 18ch;
+  }
+  .cta em { font-style: italic; color: var(--accent); }
+  .lines { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem 2rem; border-top: 1px solid var(--rule); padding-top: 1.7rem; }
+  .line-k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper-dimmer); margin-bottom: 0.4rem; }
+  .line-v a { font-size: 15px; text-decoration: none; border-bottom: 1px solid var(--rule-2); transition: color 0.25s, border-color 0.25s; }
+  .line-v a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem 0 2.5rem;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+    color: var(--paper-dimmer);
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+
+  /* ---------------- motion ---------------- */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s cubic-bezier(.22,.61,.36,1), transform 0.7s cubic-bezier(.22,.61,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .row-link, .nav-links a, .meta-v a { transition: none; }
+  }
+</style>
 </head>
 <body>
 
-<nav>
-  <span class="nav-logo">OS.</span>
-  <div class="nav-links">
-    <a href="#projects">Projects</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="mark" href="#top" style="text-decoration:none">ORLIN<span>.</span>STEFANOV</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#stack">Stack</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
 </nav>
 
-<div class="hero">
-  <div class="hero-eyebrow">Available for opportunities</div>
-  <h1>Orlin<br><em>Stefanov</em></h1>
-  <p class="hero-sub">
-    Full-stack developer specialising in backend systems, RESTful APIs, and relational databases — building scalable, well-structured software with C#, .NET, Angular, and PostgreSQL.
-  </p>
-  <div class="hero-actions">
-    <a class="btn-primary" href="https://github.com/OrlinStefanov" target="_blank">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-      GitHub
-    </a>
-    <a class="btn-ghost" href="mailto:orlinss2008@gmail.com">orlinss2008@gmail.com</a>
-    <a class="btn-ghost" href="tel:+359894438039">(+359) 894 438 039</a>
-  </div>
-</div>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Sofia, Bulgaria — Backend &amp; Full-Stack</div>
+    <h1 class="name">Orlin<br><em>Stefanov</em></h1>
+    <p class="lede">
+      I build the parts you don't see — <strong>APIs, data models and access control</strong> — and the interfaces that make them usable.
+    </p>
 
-<div class="section" id="projects">
-  <div class="section-label">Projects</div>
-  <div class="projects-grid">
-
-    <div class="project-card featured">
-      <div class="project-num">01 — Current</div>
-      <div class="project-name">TeamUp</div>
-      <div class="project-tagline">Team Collaboration & Gamified Task Platform</div>
-      <ul class="project-highlights">
-        <li>Discord-like real-time chat with SignalR WebSockets inside team workspaces</li>
-        <li>Productivity leaderboard that gamifies task completion across teams</li>
-        <li>Scalable .NET + PostgreSQL backend with complex user/message/task relationships</li>
-        <li>Dynamic Angular frontend with real-time data updates and no page reloads</li>
-      </ul>
-      <div class="tags">
-        <span class="tag green">C#</span>
-        <span class="tag green">.NET Core</span>
-        <span class="tag green">SignalR</span>
-        <span class="tag green">EF Core</span>
-        <span class="tag green">PostgreSQL</span>
-        <span class="tag green">Angular</span>
-        <span class="tag green">TypeScript</span>
-      </div>
-      <a class="project-link green" href="https://github.com/OrlinStefanov/TeamUp" target="_blank">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        View on GitHub →
-      </a>
-    </div>
-
-    <div class="project-card pro wide">
-      <div class="project-num">02 — Postbank internship</div>
-      <div class="project-name">BinTool</div>
-      <div class="project-tagline">Card BIN Classification & Commission Engine</div>
-      <ul class="project-highlights">
-        <li>Internal prototype that classifies payment-card BINs and resolves tiered commission rules into a transaction fee</li>
-        <li>Layered .NET 8 solution — Domain, Application, Infrastructure and Web API — behind a Blazor Server admin UI</li>
-        <li>JWT authentication with permission-based access control enforced on every endpoint</li>
-        <li>Bulk CSV import of BIN ranges with conflict detection and an admin resolution workflow</li>
-        <li>Audit trail recording before/after values on every change, covered by an xUnit suite of 40+ test classes</li>
-      </ul>
-      <div class="tags">
-        <span class="tag violet">C#</span>
-        <span class="tag violet">.NET 8</span>
-        <span class="tag violet">ASP.NET Core</span>
-        <span class="tag violet">Blazor Server</span>
-        <span class="tag violet">EF Core</span>
-        <span class="tag violet">JWT</span>
-        <span class="tag violet">xUnit</span>
-      </div>
-      <a class="project-link violet" href="https://github.com/OrlinStefanov/PostbankInternshipApp" target="_blank">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        View on GitHub →
-      </a>
-    </div>
-
-    <div class="project-card pro">
-      <div class="project-num">03 — QuackStack internship</div>
-      <div class="project-name">Taxi App Backend</div>
-      <div class="project-tagline">Ride-Hailing Demo & Payments</div>
-      <ul class="project-highlights">
-        <li>REST API and data model covering riders, drivers and the ride lifecycle</li>
-        <li>Booking and driver-matching logic on an Express + Supabase backend</li>
-        <li>Stripe integration handling fare payment for completed rides</li>
-      </ul>
-      <div class="tags">
-        <span class="tag violet">Node.js</span>
-        <span class="tag violet">Express</span>
-        <span class="tag violet">Supabase</span>
-        <span class="tag violet">Stripe</span>
-        <span class="tag violet">REST API</span>
-      </div>
-      <div class="project-note">Private repository</div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num">04</div>
-      <div class="project-name">Mealer</div>
-      <div class="project-tagline">Social Recipe Platform</div>
-      <ul class="project-highlights">
-        <li>Ingredient-based intelligent recipe filtering engine</li>
-        <li>Complex EF Core relational DB across ingredients, instructions & profiles</li>
-        <li>Responsive Angular + Bootstrap UI across all devices</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">C#</span>
-        <span class="tag">ASP.NET Core</span>
-        <span class="tag">EF Core</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Angular</span>
-      </div>
-      <a class="project-link" href="https://github.com/OrlinStefanov/Mealer" target="_blank">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        View on GitHub →
-      </a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num">05</div>
-      <div class="project-name">TaskManager</div>
-      <div class="project-tagline">Project & Team Collaboration</div>
-      <ul class="project-highlights">
-        <li>Role-Based Access Control (RBAC) permissions system</li>
-        <li>Robust REST API backend with EF Core + PostgreSQL</li>
-        <li>Dynamic Angular UI with smooth, intuitive UX</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">C#</span>
-        <span class="tag">.NET Core</span>
-        <span class="tag">REST API</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Angular</span>
-        <span class="tag">TypeScript</span>
-      </div>
-      <a class="project-link" href="https://github.com/OrlinStefanov/TaskManager" target="_blank">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        View on GitHub →
-      </a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num">06</div>
-      <div class="project-name">Village Defender</div>
-      <div class="project-tagline">3D Unity Survival Game</div>
-      <ul class="project-highlights">
-        <li>12-wave progressive combat system with AI-driven enemy behaviour</li>
-        <li>Inventory & economy system with in-game currency</li>
-        <li>Balanced weapon stat system with unique damage/range</li>
-        <li>Navigation Mesh for intelligent pathfinding and dynamic difficulty</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Unity</span>
-        <span class="tag">C#</span>
-        <span class="tag">NavMesh</span>
-        <span class="tag">Game AI</span>
-      </div>
-      <a class="project-link" href="https://github.com/OrlinStefanov/JameGam" target="_blank">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        View on GitHub →
-      </a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num">07</div>
-      <div class="project-name">Hero of Hammerwatch</div>
-      <div class="project-tagline">2D Action Game & Game Server</div>
-      <ul class="project-highlights">
-        <li>2D top-down action game with enemy-wave system and player upgrades</li>
-        <li>Dedicated backend server managing user authentication & cloud storage</li>
-        <li>Server-side synchronization for game maps and player state persistence</li>
-        <li>Full-stack game infrastructure from client to cloud backend</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">C#</span>
-        <span class="tag">Unity</span>
-        <span class="tag">.NET</span>
-        <span class="tag">Game Dev</span>
-      </div>
-      <a class="project-link" href="https://github.com/Spinosavarous/Hero-Of-Hammerwatch" target="_blank">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        View on GitHub →
-      </a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num">08 — Internship</div>
-      <div class="project-name">Nemetschek Event Manager</div>
-      <div class="project-tagline">Enterprise Event Management API</div>
-      <ul class="project-highlights">
-        <li>Scalable RESTful backend services for event organization and user coordination</li>
-        <li>Relational database models with Entity Framework Core</li>
-        <li>Professional-grade architecture following agile practices</li>
-        <li>Collaborative team development with version control</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">C#</span>
-        <span class="tag">ASP.NET Core</span>
-        <span class="tag">EF Core</span>
-        <span class="tag">SQL Server</span>
-        <span class="tag">REST API</span>
-      </div>
-      <a class="project-link" href="https://github.com/Speed-IT-Up-School-Edition-2025/NemetschekEventManagerBackend" target="_blank">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        View on GitHub →
-      </a>
-    </div>
-
-  </div>
-</div>
-
-<div class="section" id="achievements">
-  <div class="section-label">Achievements</div>
-  <div class="achievements-grid">
-    <div class="achievement-item">
-      <div class="achievement-icon">🏆</div>
-      <div class="achievement-content">
-        <div class="achievement-title">1st Place Team Award</div>
-        <div class="achievement-desc">Digital Technology & Programming Festival 2023</div>
-      </div>
-    </div>
-    <div class="achievement-item">
-      <div class="achievement-icon">🏆</div>
-      <div class="achievement-content">
-        <div class="achievement-title">3rd Place – IGNITE Hackathon 2026</div>
-        <div class="achievement-desc">Team ABC – Competitive programming competition</div>
-      </div>
-    </div>
-    <div class="achievement-item">
-      <div class="achievement-icon">🎮</div>
-      <div class="achievement-content">
-        <div class="achievement-title">Telerik Academy Game Dev Program</div>
-        <div class="achievement-desc">4-year specialized training in game development</div>
-      </div>
-    </div>
-    <div class="achievement-item">
-      <div class="achievement-icon">🎓</div>
-      <div class="achievement-content">
-        <div class="achievement-title">Cambridge C1 Advanced (CAE)</div>
-        <div class="achievement-desc">Proficient English language certification</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section" id="skills">
-  <div class="section-label">Skills</div>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-name">Languages</div>
-      <div class="skill-pills">
-        <span class="skill-pill">C#</span>
-        <span class="skill-pill">TypeScript</span>
-        <span class="skill-pill">JavaScript</span>
-        <span class="skill-pill">Java</span>
-        <span class="skill-pill">SQL</span>
-        <span class="skill-pill">HTML</span>
-        <span class="skill-pill">CSS</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-name">Frameworks</div>
-      <div class="skill-pills">
-        <span class="skill-pill">ASP.NET Core</span>
-        <span class="skill-pill">Angular</span>
-        <span class="skill-pill">Blazor</span>
-        <span class="skill-pill">Entity Framework</span>
-        <span class="skill-pill">SignalR</span>
-        <span class="skill-pill">Express</span>
-        <span class="skill-pill">Bootstrap</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-name">Databases</div>
-      <div class="skill-pills">
-        <span class="skill-pill">PostgreSQL</span>
-        <span class="skill-pill">MySQL</span>
-        <span class="skill-pill">SQLite</span>
-        <span class="skill-pill">SQL Server</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-name">Tools & Platforms</div>
-      <div class="skill-pills">
-        <span class="skill-pill">Git</span>
-        <span class="skill-pill">Visual Studio</span>
-        <span class="skill-pill">VS Code</span>
-        <span class="skill-pill">Unity</span>
-        <span class="skill-pill">Supabase</span>
-        <span class="skill-pill">Stripe</span>
-        <span class="skill-pill">PyCharm</span>
-        <span class="skill-pill">Cursor</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section" id="experience">
-  <div class="section-label">Experience & Education</div>
-  <div style="display: flex; flex-direction: column; gap: 12px;">
-    <div class="exp-item">
-      <div class="exp-dot"></div>
+    <div class="hero-meta">
       <div>
-        <div class="exp-company">Postbank (Eurobank Bulgaria)</div>
-        <div class="exp-role">Trainee Software Engineer</div>
-        <div class="exp-date">22 Jul – 16 Aug 2026 · Sofia, Bulgaria</div>
-        <div class="exp-desc">First paid engineering role. Built an internal prototype for card BIN classification and commission configuration on a layered .NET 8 stack with a Blazor Server admin UI — permission-based access control, bulk CSV import with conflict resolution, and a complete audit trail — working to a branch-and-pull-request review workflow.</div>
+        <div class="meta-k">Status</div>
+        <div class="meta-v"><span class="avail">Open to junior roles</span></div>
       </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-dot"></div>
       <div>
-        <div class="exp-company">QuackStack</div>
-        <div class="exp-role">Backend Intern</div>
-        <div class="exp-date">1 – 14 Jul 2026</div>
-        <div class="exp-desc">Two-week internship on the backend of a taxi-hailing demo app. Built REST endpoints and the underlying data model on Express and Supabase, implemented ride booking and matching logic, and integrated Stripe payments.</div>
+        <div class="meta-k">Working in</div>
+        <div class="meta-v">C# · .NET · Angular · PostgreSQL</div>
       </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-dot"></div>
       <div>
-        <div class="exp-company">Nemetschek Bulgaria</div>
-        <div class="exp-role">Software Development Intern</div>
-        <div class="exp-date">Jul 2025 · Sofia, Bulgaria</div>
-        <div class="exp-desc">Worked on a backend-oriented project within a dev team. Implemented user and event management features using C#, Entity Framework, and SQL Server. Gained hands-on experience with database operations and team-based workflows.</div>
+        <div class="meta-k">Most recently</div>
+        <div class="meta-v">Trainee Engineer, Postbank</div>
       </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-dot" style="background: var(--accent2);"></div>
       <div>
-        <div class="exp-company">СПГЕ "Джон Атанасов"</div>
-        <div class="exp-role">Systems Programming · EQF Level 5</div>
-        <div class="exp-date">Sep 2022 – Jul 2025 · Sofia, Bulgaria</div>
-        <div class="exp-desc">Specialised in systems programming. Alongside coursework, built and shipped multiple full-stack applications and a 3D Unity game. Holds a C1 Advanced Cambridge English certificate.</div>
+        <div class="meta-k">Elsewhere</div>
+        <div class="meta-v"><a href="https://github.com/OrlinStefanov" target="_blank" rel="noopener">github.com/OrlinStefanov</a></div>
       </div>
     </div>
   </div>
-</div>
+</header>
 
-<div class="section" id="contact">
-  <div class="section-label">Contact</div>
-  <p style="color: var(--muted); font-size: 0.9rem; max-width: 420px; line-height: 1.7;">Open to internships, junior roles, and interesting collaborations. Based in Sofia, Bulgaria.</p>
-  <div class="contact-row">
-    <a class="btn-primary" href="mailto:orlinss2008@gmail.com">Send an email</a>
-    <a class="btn-ghost" href="https://github.com/OrlinStefanov" target="_blank">GitHub profile</a>
-    <a class="btn-ghost" href="tel:+359894438039">(+359) 894 438 039</a>
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-title">Selected Work</span>
+      <span class="sec-count">05</span>
+      <span class="sec-note">Two of these were paid engineering work</span>
+    </div>
+
+    <div class="work">
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">01</div>
+          <div class="row-when">2026</div>
+          <div class="row-kind">Postbank</div>
+        </div>
+        <div>
+          <h2 class="row-title">BinTool</h2>
+          <div class="row-sub">Card BIN classification &amp; commission engine</div>
+          <ul class="row-points">
+            <li>Classifies payment-card BINs and resolves <strong>tiered commission rules</strong> into a transaction fee</li>
+            <li>Layered .NET 8 solution — Domain, Application, Infrastructure and Web API — behind a Blazor Server admin UI</li>
+            <li>JWT authentication with a <strong>permission catalogue enforced per endpoint</strong>; roles are composed from granular permissions</li>
+            <li>Bulk CSV import of BIN ranges with conflict detection and an administrator resolution workflow</li>
+            <li>Audit trail capturing before/after values on every change, covered by <strong>40+ xUnit test classes</strong></li>
+          </ul>
+          <div class="stack-line">
+            <span>C#</span><span>.NET 8</span><span>ASP.NET Core</span><span>Blazor Server</span><span>EF Core</span><span>JWT</span><span>xUnit</span>
+          </div>
+          <a class="row-link" href="https://github.com/OrlinStefanov/PostbankInternshipApp" target="_blank" rel="noopener">View repository →</a>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">02</div>
+          <div class="row-when">2026</div>
+          <div class="row-kind">QuackStack</div>
+        </div>
+        <div>
+          <h2 class="row-title">Taxi App Backend</h2>
+          <div class="row-sub">Ride-hailing demo &amp; payments</div>
+          <ul class="row-points">
+            <li>REST endpoints and the data model covering <strong>riders, drivers and the ride lifecycle</strong></li>
+            <li>Booking and driver-matching logic on an Express and Supabase backend</li>
+            <li><strong>Stripe integration</strong> handling fare payment on completed rides</li>
+          </ul>
+          <div class="stack-line">
+            <span>Node.js</span><span>Express</span><span>Supabase</span><span>Stripe</span><span>REST</span>
+          </div>
+          <div class="row-private">Private repository</div>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">03</div>
+          <div class="row-when">2025–26</div>
+          <div class="row-kind">Team</div>
+        </div>
+        <div>
+          <h2 class="row-title">TeamUp</h2>
+          <div class="row-sub">Collaboration &amp; gamified productivity</div>
+          <ul class="row-points">
+            <li><strong>Discord-style real-time chat</strong> over SignalR WebSockets inside team workspaces</li>
+            <li>Productivity leaderboard that gamifies task completion across a team</li>
+            <li>.NET and PostgreSQL backend modelling users, messages and tasks</li>
+            <li>Angular client that updates live, without page reloads</li>
+          </ul>
+          <div class="stack-line">
+            <span>C#</span><span>.NET</span><span>SignalR</span><span>EF Core</span><span>PostgreSQL</span><span>Angular</span>
+          </div>
+          <a class="row-link" href="https://github.com/OrlinStefanov/TeamUp" target="_blank" rel="noopener">View repository →</a>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">04</div>
+          <div class="row-when">2025</div>
+          <div class="row-kind">Nemetschek</div>
+        </div>
+        <div>
+          <h2 class="row-title">Event Manager API</h2>
+          <div class="row-sub">Event management &amp; user administration</div>
+          <ul class="row-points">
+            <li>RESTful backend services for <strong>event organisation and user coordination</strong></li>
+            <li>Relational models and data access with EF Core against SQL Server</li>
+            <li>Built inside a professional engineering team working to agile practice</li>
+          </ul>
+          <div class="stack-line">
+            <span>C#</span><span>ASP.NET Core</span><span>EF Core</span><span>SQL Server</span><span>REST</span>
+          </div>
+          <a class="row-link" href="https://github.com/Speed-IT-Up-School-Edition-2025/NemetschekEventManagerBackend" target="_blank" rel="noopener">View repository →</a>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">05</div>
+          <div class="row-when">2025</div>
+          <div class="row-kind">Personal</div>
+        </div>
+        <div>
+          <h2 class="row-title">Mealer</h2>
+          <div class="row-sub">Social recipe platform</div>
+          <ul class="row-points">
+            <li>Recipe discovery driven by <strong>the ingredients you already have</strong></li>
+            <li>Relational model spanning ingredients, instructions and user profiles</li>
+            <li>Responsive Angular and Bootstrap client</li>
+          </ul>
+          <div class="stack-line">
+            <span>C#</span><span>ASP.NET Core</span><span>EF Core</span><span>PostgreSQL</span><span>Angular</span>
+          </div>
+          <a class="row-link" href="https://github.com/OrlinStefanov/Mealer" target="_blank" rel="noopener">View repository →</a>
+        </div>
+      </article>
+
+    </div>
   </div>
-</div>
+</section>
 
-<footer>Orlin Stefanov · Sofia, Bulgaria · 2026</footer>
+<section id="also">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-title">Also Built</span>
+      <span class="sec-count">04</span>
+    </div>
+    <div class="also reveal">
+      <div class="also-item">
+        <div class="also-name">TaskManager</div>
+        <a class="also-link" href="https://github.com/OrlinStefanov/TaskManager" target="_blank" rel="noopener">GitHub →</a>
+        <div class="also-desc">Workspace-based project collaboration with role-based access control. C#, .NET, PostgreSQL, Angular.</div>
+      </div>
+      <div class="also-item">
+        <div class="also-name">Village Defender</div>
+        <a class="also-link" href="https://github.com/OrlinStefanov/JameGam" target="_blank" rel="noopener">GitHub →</a>
+        <div class="also-desc">3D Unity survival game — twelve enemy waves, NavMesh pathfinding, inventory and in-game economy.</div>
+      </div>
+      <div class="also-item">
+        <div class="also-name">Hero of Hammerwatch</div>
+        <a class="also-link" href="https://github.com/Spinosavarous/Hero-Of-Hammerwatch" target="_blank" rel="noopener">GitHub →</a>
+        <div class="also-desc">2D action game backed by a dedicated server handling account authentication and cloud save state.</div>
+      </div>
+      <div class="also-item">
+        <div class="also-name">Arduino Robot Car</div>
+        <a class="also-link" href="https://github.com/OrlinStefanov/ArduinoRobot" target="_blank" rel="noopener">GitHub →</a>
+        <div class="also-desc">Obstacle-avoiding vehicle wiring sensors, motor drivers and navigation logic on embedded C/C++.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-title">Experience</span>
+      <span class="sec-count">03</span>
+    </div>
+    <div class="track reveal">
+      <div class="stop">
+        <div class="stop-when">22 Jul — 16 Aug 2026</div>
+        <div>
+          <div class="stop-org">Postbank <span style="color:var(--paper-dimmer);font-weight:300">(Eurobank Bulgaria)</span></div>
+          <div class="stop-role">Trainee Software Engineer</div>
+          <div class="stop-body">First paid engineering role. Built an internal prototype for card BIN classification and commission configuration across a layered .NET 8 backend and a Blazor Server admin UI — permission-based access control, bulk CSV import with conflict resolution, and a complete audit trail — working to a branch-and-pull-request review workflow.</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">1 — 14 Jul 2026</div>
+        <div>
+          <div class="stop-org">QuackStack</div>
+          <div class="stop-role">Backend Intern</div>
+          <div class="stop-body">Two-week internship on the backend of a taxi-hailing demo app. Built REST endpoints and the underlying data model on Express and Supabase, implemented ride booking and driver matching, and integrated Stripe payments.</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">Jul 2025</div>
+        <div>
+          <div class="stop-org">Nemetschek Bulgaria</div>
+          <div class="stop-role">Software Development Intern</div>
+          <div class="stop-body">Backend-oriented project inside a development team. Implemented user and event management features with C#, Entity Framework and SQL Server, and got a first look at how professional teams actually ship.</div>
+        </div>
+      </div>
+      <div class="stop">
+        <div class="stop-when">2022 — 2027 (expected)</div>
+        <div>
+          <div class="stop-org">СПГЕ „Джон Атанасов“</div>
+          <div class="stop-role">Systems Programming · EQF Level 5</div>
+          <div class="stop-body">Specialising in systems programming in Sofia. Alongside coursework, shipped several full-stack applications, a 3D Unity game and an embedded robotics project.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-title">Stack</span>
+      <span class="sec-note">Ordered by how much I've actually used them</span>
+    </div>
+    <div class="grid-2 reveal">
+      <div>
+        <div class="kit-k">Languages</div>
+        <div class="kit-v"><b>C#</b> · TypeScript · JavaScript · SQL · Java · C/C++</div>
+      </div>
+      <div>
+        <div class="kit-k">Backend</div>
+        <div class="kit-v"><b>ASP.NET Core</b> · EF Core · SignalR · Express · REST · JWT</div>
+      </div>
+      <div>
+        <div class="kit-k">Frontend</div>
+        <div class="kit-v"><b>Angular</b> · Blazor · TypeScript · Bootstrap · HTML/CSS</div>
+      </div>
+      <div>
+        <div class="kit-k">Data</div>
+        <div class="kit-v"><b>PostgreSQL</b> · SQL Server · SQLite · MySQL · Supabase</div>
+      </div>
+      <div>
+        <div class="kit-k">Practice</div>
+        <div class="kit-v"><b>Git &amp; PR review</b> · xUnit · Agile · Swagger/OpenAPI</div>
+      </div>
+      <div>
+        <div class="kit-k">Also</div>
+        <div class="kit-v">Unity · Stripe · Arduino · Visual Studio · VS Code</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recognition">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-title">Recognition</span>
+      <span class="sec-count">04</span>
+    </div>
+    <div class="awards reveal">
+      <div class="award">
+        <div class="award-rank">1st place — team</div>
+        <div class="award-what">Digital Technology &amp; Programming Festival</div>
+        <div class="award-where">2023</div>
+      </div>
+      <div class="award">
+        <div class="award-rank">3rd place</div>
+        <div class="award-what">IGNITE Hackathon, Team ABC</div>
+        <div class="award-where">2026</div>
+      </div>
+      <div class="award">
+        <div class="award-rank">4-year programme</div>
+        <div class="award-what">Telerik Academy School Game Development</div>
+        <div class="award-where">Completed</div>
+      </div>
+      <div class="award">
+        <div class="award-rank">Certification</div>
+        <div class="award-what">Cambridge C1 Advanced (CAE)</div>
+        <div class="award-where">English — proficient</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-title">Contact</span>
+    </div>
+    <h2 class="cta reveal">Got something that needs <em>building?</em></h2>
+    <div class="lines reveal">
+      <div>
+        <div class="line-k">Email</div>
+        <div class="line-v"><a href="mailto:orlinss2008@gmail.com">orlinss2008@gmail.com</a></div>
+      </div>
+      <div>
+        <div class="line-k">Phone</div>
+        <div class="line-v"><a href="tel:+359894438039">+359 894 438 039</a></div>
+      </div>
+      <div>
+        <div class="line-k">GitHub</div>
+        <div class="line-v"><a href="https://github.com/OrlinStefanov" target="_blank" rel="noopener">OrlinStefanov</a></div>
+      </div>
+      <div>
+        <div class="line-k">Based in</div>
+        <div class="line-v" style="font-size:15px;color:var(--paper-dim)">Sofia, Bulgaria</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;width:100%">
+    <span>Orlin Stefanov</span>
+    <span>Sofia · 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.getElementById('nav');
+    var onScroll = function () {
+      nav.classList.toggle('stuck', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
