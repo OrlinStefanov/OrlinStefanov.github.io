@@ -185,11 +185,17 @@
       border-color: rgba(108,111,255,0.35);
       transform: translateY(-3px);
     }
-    .project-card.featured { grid-column: 1 / -1; }
+    .project-card.featured, .project-card.wide { grid-column: 1 / -1; }
     .project-card.featured::before {
       background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(52,211,153,0.07), transparent);
     }
     .project-card.featured:hover { border-color: rgba(52,211,153,0.35); }
+    .project-card.pro::before {
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(167,139,250,0.07), transparent);
+    }
+    .project-card.pro:hover { border-color: rgba(167,139,250,0.35); }
+    .project-card.pro .project-tagline { color: var(--accent2); }
+    .project-card.pro .project-highlights li::before { color: var(--accent2); }
 
     @media (max-width: 900px) {
       .projects-grid {
@@ -256,6 +262,7 @@
       letter-spacing: 0.04em;
     }
     .tag.green { background: rgba(52,211,153,0.1); color: #6ee7b7; }
+    .tag.violet { background: rgba(167,139,250,0.12); color: #c4b5fd; }
     .project-link {
       display: inline-flex;
       align-items: center;
@@ -275,6 +282,20 @@
     .project-link:hover { background: rgba(108,111,255,0.1); border-color: rgba(108,111,255,0.45); }
     .project-link.green { color: var(--accent3); border-color: rgba(52,211,153,0.25); }
     .project-link.green:hover { background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.45); }
+    .project-link.violet { color: var(--accent2); border-color: rgba(167,139,250,0.25); }
+    .project-link.violet:hover { background: rgba(167,139,250,0.08); border-color: rgba(167,139,250,0.45); }
+
+    .project-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding: 6px 0;
+      margin-top: auto;
+    }
 
     .achievement-item {
       background: var(--surface);
@@ -440,8 +461,53 @@
       </a>
     </div>
 
+    <div class="project-card pro wide">
+      <div class="project-num">02 — Postbank internship</div>
+      <div class="project-name">BinTool</div>
+      <div class="project-tagline">Card BIN Classification & Commission Engine</div>
+      <ul class="project-highlights">
+        <li>Internal prototype that classifies payment-card BINs and resolves tiered commission rules into a transaction fee</li>
+        <li>Layered .NET 8 solution — Domain, Application, Infrastructure and Web API — behind a Blazor Server admin UI</li>
+        <li>JWT authentication with permission-based access control enforced on every endpoint</li>
+        <li>Bulk CSV import of BIN ranges with conflict detection and an admin resolution workflow</li>
+        <li>Audit trail recording before/after values on every change, covered by an xUnit suite of 40+ test classes</li>
+      </ul>
+      <div class="tags">
+        <span class="tag violet">C#</span>
+        <span class="tag violet">.NET 8</span>
+        <span class="tag violet">ASP.NET Core</span>
+        <span class="tag violet">Blazor Server</span>
+        <span class="tag violet">EF Core</span>
+        <span class="tag violet">JWT</span>
+        <span class="tag violet">xUnit</span>
+      </div>
+      <a class="project-link violet" href="https://github.com/OrlinStefanov/PostbankInternshipApp" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        View on GitHub →
+      </a>
+    </div>
+
+    <div class="project-card pro">
+      <div class="project-num">03 — QuackStack internship</div>
+      <div class="project-name">Taxi App Backend</div>
+      <div class="project-tagline">Ride-Hailing Demo & Payments</div>
+      <ul class="project-highlights">
+        <li>REST API and data model covering riders, drivers and the ride lifecycle</li>
+        <li>Booking and driver-matching logic on an Express + Supabase backend</li>
+        <li>Stripe integration handling fare payment for completed rides</li>
+      </ul>
+      <div class="tags">
+        <span class="tag violet">Node.js</span>
+        <span class="tag violet">Express</span>
+        <span class="tag violet">Supabase</span>
+        <span class="tag violet">Stripe</span>
+        <span class="tag violet">REST API</span>
+      </div>
+      <div class="project-note">Private repository</div>
+    </div>
+
     <div class="project-card">
-      <div class="project-num">02</div>
+      <div class="project-num">04</div>
       <div class="project-name">Mealer</div>
       <div class="project-tagline">Social Recipe Platform</div>
       <ul class="project-highlights">
@@ -463,7 +529,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-num">03</div>
+      <div class="project-num">05</div>
       <div class="project-name">TaskManager</div>
       <div class="project-tagline">Project & Team Collaboration</div>
       <ul class="project-highlights">
@@ -486,7 +552,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-num">04</div>
+      <div class="project-num">06</div>
       <div class="project-name">Village Defender</div>
       <div class="project-tagline">3D Unity Survival Game</div>
       <ul class="project-highlights">
@@ -508,7 +574,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-num">05</div>
+      <div class="project-num">07</div>
       <div class="project-name">Hero of Hammerwatch</div>
       <div class="project-tagline">2D Action Game & Game Server</div>
       <ul class="project-highlights">
@@ -530,7 +596,7 @@
     </div>
 
     <div class="project-card">
-      <div class="project-num">06 — Internship</div>
+      <div class="project-num">08 — Internship</div>
       <div class="project-name">Nemetschek Event Manager</div>
       <div class="project-tagline">Enterprise Event Management API</div>
       <ul class="project-highlights">
@@ -551,9 +617,6 @@
         View on GitHub →
       </a>
     </div>
-
-  </div>
-</div>
 
   </div>
 </div>
@@ -612,8 +675,10 @@
       <div class="skill-pills">
         <span class="skill-pill">ASP.NET Core</span>
         <span class="skill-pill">Angular</span>
+        <span class="skill-pill">Blazor</span>
         <span class="skill-pill">Entity Framework</span>
         <span class="skill-pill">SignalR</span>
+        <span class="skill-pill">Express</span>
         <span class="skill-pill">Bootstrap</span>
       </div>
     </div>
@@ -633,6 +698,8 @@
         <span class="skill-pill">Visual Studio</span>
         <span class="skill-pill">VS Code</span>
         <span class="skill-pill">Unity</span>
+        <span class="skill-pill">Supabase</span>
+        <span class="skill-pill">Stripe</span>
         <span class="skill-pill">PyCharm</span>
         <span class="skill-pill">Cursor</span>
       </div>
@@ -643,6 +710,24 @@
 <div class="section" id="experience">
   <div class="section-label">Experience & Education</div>
   <div style="display: flex; flex-direction: column; gap: 12px;">
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-company">Postbank (Eurobank Bulgaria)</div>
+        <div class="exp-role">Trainee Software Engineer</div>
+        <div class="exp-date">22 Jul – 16 Aug 2026 · Sofia, Bulgaria</div>
+        <div class="exp-desc">First paid engineering role. Built an internal prototype for card BIN classification and commission configuration on a layered .NET 8 stack with a Blazor Server admin UI — permission-based access control, bulk CSV import with conflict resolution, and a complete audit trail — working to a branch-and-pull-request review workflow.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-company">QuackStack</div>
+        <div class="exp-role">Backend Intern</div>
+        <div class="exp-date">1 – 14 Jul 2026</div>
+        <div class="exp-desc">Two-week internship on the backend of a taxi-hailing demo app. Built REST endpoints and the underlying data model on Express and Supabase, implemented ride booking and matching logic, and integrated Stripe payments.</div>
+      </div>
+    </div>
     <div class="exp-item">
       <div class="exp-dot"></div>
       <div>
@@ -674,7 +759,7 @@
   </div>
 </div>
 
-<footer>Orlin Stefanov · Sofia, Bulgaria · 2025</footer>
+<footer>Orlin Stefanov · Sofia, Bulgaria · 2026</footer>
 
 </body>
 </html>
