@@ -238,13 +238,18 @@
     border: 1px solid var(--paper-dimmer); opacity: 0.8;
   }
 
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 1.8rem; }
   .shot {
-    margin: 1.6rem 0 0;
+    margin: 0;
     border: 1px solid var(--rule-2); border-radius: 4px;
     overflow: hidden; background: var(--ink-2);
     max-width: 100%;
   }
-  .shot img { display: block; width: 100%; height: auto; }
+  .shot img { display: block; width: 100%; height: auto; background: #fff; }
+  .shot { transition: border-color 0.3s ease; }
+  .shot:hover { border-color: rgba(216,162,74,0.4); }
+  .shot a { display: block; }
+  .shot figcaption::after { content: "  ↗"; opacity: 0.55; }
   .shot figcaption {
     font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
     color: var(--paper-dimmer); padding: 0.7rem 0.9rem;
@@ -397,7 +402,7 @@
     <div class="sec-head">
       <span class="sec-title">Selected Work</span>
       <span class="sec-count">05</span>
-      <span class="sec-note">Two of these were paid engineering work</span>
+      <span class="sec-note">Screenshots are of the apps running, not mockups</span>
     </div>
 
     <div class="work">
@@ -422,6 +427,16 @@
             <span>C#</span><span>.NET 8</span><span>ASP.NET Core</span><span>Blazor Server</span><span>EF Core</span><span>JWT</span><span>xUnit</span>
           </div>
           <a class="row-link" href="https://github.com/OrlinStefanov/PostbankInternshipApp" target="_blank" rel="noopener">View repository →</a>
+          <div class="shots">
+            <figure class="shot">
+              <a href="assets/bintool-lookup.webp" target="_blank" rel="noopener" aria-label="Open full-size: Classifying a BIN against the stored ranges"><img src="assets/bintool-lookup.webp" alt="Classifying a BIN against the stored ranges" loading="lazy" decoding="async" width="1600" height="1000" /></a>
+              <figcaption>Classifying a BIN against the stored ranges</figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/bintool-ranges.webp" target="_blank" rel="noopener" aria-label="Open full-size: Stored BIN ranges after a CSV import"><img src="assets/bintool-ranges.webp" alt="Stored BIN ranges after a CSV import" loading="lazy" decoding="async" width="1600" height="1000" /></a>
+              <figcaption>Stored BIN ranges after a CSV import</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
@@ -465,6 +480,16 @@
             <span>C#</span><span>.NET</span><span>SignalR</span><span>EF Core</span><span>PostgreSQL</span><span>Angular</span>
           </div>
           <a class="row-link" href="https://github.com/OrlinStefanov/TeamUp" target="_blank" rel="noopener">View repository →</a>
+          <div class="shots">
+            <figure class="shot">
+              <a href="assets/teamup-board.webp" target="_blank" rel="noopener" aria-label="Open full-size: Task board with difficulty-weighted points"><img src="assets/teamup-board.webp" alt="Task board with difficulty-weighted points" loading="lazy" decoding="async" width="1600" height="1000" /></a>
+              <figcaption>Task board with difficulty-weighted points</figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/teamup-chat.webp" target="_blank" rel="noopener" aria-label="Open full-size: Workspace channel chat over SignalR"><img src="assets/teamup-chat.webp" alt="Workspace channel chat over SignalR" loading="lazy" decoding="async" width="1600" height="1000" /></a>
+              <figcaption>Workspace channel chat over SignalR</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
