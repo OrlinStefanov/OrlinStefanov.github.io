@@ -147,12 +147,13 @@
   h1.name .ln:nth-child(2) > span { animation-delay: 0.11s; }
   @keyframes rise { to { transform: none; } }
 
-  .hero .eyebrow, .hero .lede, .hero .hero-meta {
+  .hero .eyebrow, .hero .lede, .hero .availability, .hero .hero-meta {
     opacity: 0; animation: fadeUp 0.9s cubic-bezier(.22,.61,.36,1) forwards;
   }
-  .hero .eyebrow   { animation-delay: 0.05s; }
-  .hero .lede      { animation-delay: 0.42s; }
-  .hero .hero-meta { animation-delay: 0.56s; }
+  .hero .eyebrow      { animation-delay: 0.05s; }
+  .hero .lede         { animation-delay: 0.42s; }
+  .hero .availability { animation-delay: 0.52s; }
+  .hero .hero-meta    { animation-delay: 0.64s; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
   .lede {
@@ -175,10 +176,21 @@
   .meta-v { font-size: 14px; color: var(--paper); font-weight: 400; }
   .meta-v a { text-decoration: none; border-bottom: 1px solid var(--rule-2); transition: border-color 0.25s, color 0.25s; }
   .meta-v a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-  .avail { display: inline-flex; align-items: center; gap: 7px; }
-  .avail::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim);
+  /* The first question a recruiter has is "what is he actually looking for",
+     so it gets its own line rather than being buried in the meta grid. */
+  .availability {
+    margin-top: clamp(1.6rem, 3.5vw, 2.4rem);
+    max-width: 52ch;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--accent);
+    font-size: 14.5px; line-height: 1.65;
+    color: var(--paper-dim);
+  }
+  .availability strong { font-weight: 500; color: var(--paper); }
+  .availability .avail-k {
+    display: block; margin-bottom: 0.4rem;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent);
   }
 
   /* ---------------- section chrome ---------------- */
@@ -428,7 +440,7 @@
     .shot { clip-path: none; transition: none; }
     .row-link, .nav-links a, .meta-v a, .award, .award-badge { transition: none; }
     h1.name .ln > span { transform: none; animation: none; }
-    .hero .eyebrow, .hero .lede, .hero .hero-meta { opacity: 1; animation: none; }
+    .hero .eyebrow, .hero .lede, .hero .availability, .hero .hero-meta { opacity: 1; animation: none; }
     .progress { display: none; }
   }
 </style>
@@ -458,10 +470,16 @@
       I build the parts you don't see — <strong>APIs, data models and access control</strong> — and the interfaces that make them usable.
     </p>
 
+    <p class="availability">
+      <span class="avail-k">Availability</span>
+      Open to <strong>part-time junior or trainee engineering roles</strong> through the 2026&ndash;27
+      school year, and <strong>full-time from graduation in summer 2027</strong>.
+    </p>
+
     <div class="hero-meta">
       <div>
-        <div class="meta-k">Status</div>
-        <div class="meta-v"><span class="avail">Open to junior roles</span></div>
+        <div class="meta-k">Studying</div>
+        <div class="meta-v">Systems Programming, SPGE &middot; grad. 2027</div>
       </div>
       <div>
         <div class="meta-k">Working in</div>
@@ -473,7 +491,7 @@
       </div>
       <div>
         <div class="meta-k">Elsewhere</div>
-        <div class="meta-v"><a href="https://github.com/OrlinStefanov" target="_blank" rel="noopener">github.com/OrlinStefanov</a></div>
+        <div class="meta-v"><a href="https://github.com/OrlinStefanov" target="_blank" rel="noopener">github.com/OrlinStefanov</a> &nbsp;·&nbsp; <a href="assets/Orlin_Stefanov_CV.pdf" target="_blank" rel="noopener">CV</a></div>
       </div>
     </div>
   </div>
@@ -787,7 +805,7 @@
     <div class="sec-head">
       <span class="sec-title">Contact</span>
     </div>
-    <h2 class="cta reveal">Got something that needs <em>building?</em></h2>
+    <h2 class="cta reveal">Looking for a team to <em>build with.</em></h2>
     <div class="lines reveal" data-stagger>
       <div>
         <div class="line-k">Email</div>
@@ -800,6 +818,10 @@
       <div>
         <div class="line-k">GitHub</div>
         <div class="line-v"><a href="https://github.com/OrlinStefanov" target="_blank" rel="noopener">OrlinStefanov</a></div>
+      </div>
+      <div>
+        <div class="line-k">CV</div>
+        <div class="line-v"><a href="assets/Orlin_Stefanov_CV.pdf" target="_blank" rel="noopener">Download (PDF)</a></div>
       </div>
       <div>
         <div class="line-k">Based in</div>
