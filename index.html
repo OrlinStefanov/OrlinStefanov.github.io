@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Orlin Stefanov — Backend & Full-Stack Developer</title>
-<meta name="description" content="Orlin Stefanov — backend and full-stack developer in Sofia, Bulgaria. C#, .NET, Angular and PostgreSQL. Internships at Postbank and QuackStack, plus Nemetschek’s Speed IT Up programme." />
+<meta name="description" content="Orlin Stefanov — backend and full-stack developer in Sofia, Bulgaria. C#, .NET, Angular and PostgreSQL. Internships at Postbank and QuackStack, Nemetschek’s Speed IT Up programme, and 2nd place at the Atanasov48 hackathon." />
 <meta name="author" content="Orlin Stefanov" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Orlin Stefanov — Backend & Full-Stack Developer" />
@@ -357,8 +357,11 @@
   .kit-v b { font-weight: 400; color: var(--paper); }
 
   /* ---------------- recognition ---------------- */
-  /* four items, so a 2x2 block never leaves a dangling empty cell */
+  /* The 1px gap shows the container through as a hairline rule, so an empty
+     trailing cell would read as a blank card. On an odd count the last one
+     spans the row instead. */
   .awards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .award:last-child:nth-child(odd) { grid-column: 1 / -1; }
   @media (max-width: 560px) { .awards { grid-template-columns: 1fr; } }
   .award {
     background: var(--ink); padding: 1.6rem 1.4rem;
@@ -501,7 +504,7 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-title">Selected Work</span>
-      <span class="sec-count">05</span>
+      <span class="sec-count">06</span>
       <span class="sec-note">Screenshots are of the apps running, not mockups</span>
     </div>
 
@@ -571,6 +574,29 @@
       <article class="row reveal">
         <div class="row-aside">
           <div class="row-num">03</div>
+          <div class="row-when">2026</div>
+          <div class="row-kind">Atanasov48</div>
+        </div>
+        <div>
+          <h2 class="row-title">BDN-Agent</h2>
+          <div class="row-sub">Energy-aware question-answering agent &mdash; routing &amp; verification</div>
+          <ul class="row-points">
+            <li>Hackathon project, built by two of us over a weekend. I owned the <strong>router, the verification checks and the evaluation harness</strong></li>
+            <li>Sends each question down the cheapest path that can answer it: a small classifier answers <strong>nine fixed yes/no questions</strong>, then plain if-rules &mdash; not a model &mdash; choose the route</li>
+            <li>Confidence thresholds <strong>calibrated per classifier</strong> and tuned only on a dev split, with a holdout set kept back as the honest check; where the policy is unsure it escalates rather than answer cheaply</li>
+            <li>Every sentence of an answer is checked against its sources and removed if unsupported &mdash; <strong>no source, no claim</strong></li>
+            <li>Evaluation over <strong>50 labelled Bulgarian queries</strong> reporting accuracy, confident mistakes, cost and estimated energy, behind <strong>300+ tests</strong> on the router and eval side</li>
+          </ul>
+          <div class="stack-line">
+            <span>Python</span><span>PostgreSQL</span><span>pgvector</span><span>Streamlit</span><span>pytest</span><span>Docker</span>
+          </div>
+          <a class="row-link" href="https://github.com/BDN-Jonkata/BDN-Agent" target="_blank" rel="noopener">View repository &rarr;</a>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">04</div>
           <div class="row-when">2025–26</div>
           <div class="row-kind">Team</div>
         </div>
@@ -602,7 +628,7 @@
 
       <article class="row reveal">
         <div class="row-aside">
-          <div class="row-num">04</div>
+          <div class="row-num">05</div>
           <div class="row-when">2025</div>
           <div class="row-kind">Nemetschek</div>
         </div>
@@ -623,7 +649,7 @@
 
       <article class="row reveal">
         <div class="row-aside">
-          <div class="row-num">05</div>
+          <div class="row-num">06</div>
           <div class="row-when">2025</div>
           <div class="row-kind">Personal</div>
         </div>
@@ -739,7 +765,7 @@
     <div class="grid-2 reveal" data-stagger>
       <div>
         <div class="kit-k">Languages</div>
-        <div class="kit-v"><b>C#</b> · TypeScript · JavaScript · SQL · Java · C/C++</div>
+        <div class="kit-v"><b>C#</b> · TypeScript · JavaScript · SQL · Python · Java · C/C++</div>
       </div>
       <div>
         <div class="kit-k">Backend</div>
@@ -755,7 +781,7 @@
       </div>
       <div>
         <div class="kit-k">Practice</div>
-        <div class="kit-v"><b>Git &amp; PR review</b> · xUnit · Agile · Swagger/OpenAPI</div>
+        <div class="kit-v"><b>Git &amp; PR review</b> · xUnit · pytest · Agile · Swagger/OpenAPI</div>
       </div>
       <div>
         <div class="kit-k">Also</div>
@@ -769,9 +795,15 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-title">Recognition</span>
-      <span class="sec-count">04</span>
+      <span class="sec-count">05</span>
     </div>
     <div class="awards reveal" data-stagger>
+      <div class="award">
+        <div class="award-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 5 13.5h5.5L9.5 21.5l8.5-11.5H12l1-7.5Z"/></svg></div>
+        <div class="award-rank">2nd place &mdash; team</div>
+        <div class="award-what">Atanasov48 Hackathon</div>
+        <div class="award-where">Oct 2026 &middot; prize included a summer internship</div>
+      </div>
       <div class="award">
         <div class="award-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4.5A2.5 2.5 0 0 0 7 9.5"/><path d="M17 6h2.5A2.5 2.5 0 0 1 17 9.5"/><path d="M12 14v3"/><path d="M8.5 20h7"/><path d="M10 17h4l.7 3h-5.4l.7-3Z"/></svg></div>
         <div class="award-rank">1st place — team</div>
