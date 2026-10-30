@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Orlin Stefanov — Backend & Full-Stack Developer</title>
-<meta name="description" content="Orlin Stefanov — backend and full-stack developer in Sofia, Bulgaria. C#, .NET, Angular and PostgreSQL. Internships at Postbank and QuackStack, Nemetschek’s Speed IT Up programme, and 2nd place at the Atanasov48 hackathon." />
+<meta name="description" content="Orlin Stefanov — backend and full-stack developer in Sofia, Bulgaria. C#, .NET, Angular and PostgreSQL. Internships at Postbank and QuackStack, Nemetschek’s Speed IT Up programme, and podium finishes at two hackathons in October 2026." />
 <meta name="author" content="Orlin Stefanov" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Orlin Stefanov — Backend & Full-Stack Developer" />
@@ -504,7 +504,7 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-title">Selected Work</span>
-      <span class="sec-count">06</span>
+      <span class="sec-count">08</span>
       <span class="sec-note">Screenshots are of the apps running, not mockups</span>
     </div>
 
@@ -597,6 +597,52 @@
       <article class="row reveal">
         <div class="row-aside">
           <div class="row-num">04</div>
+          <div class="row-when">2026</div>
+          <div class="row-kind">Hackathon</div>
+        </div>
+        <div>
+          <h2 class="row-title">ABC-Agent</h2>
+          <div class="row-sub">Reinforcement-learning agent for a six-player retail simulation</div>
+          <ul class="row-points">
+            <li>Team of four, one agent each, competing in a 25-region retail-chain simulation: 1,000 rounds a match, a 318-value observation and 44 levers to set. <strong>My agent was the team&rsquo;s entry in the final round</strong>, which placed 3rd</li>
+            <li>Searched scripted strategies first, then trained a network to copy the best one with <strong>behaviour cloning and DAgger</strong>, then fine-tuned it with A2C in a league of my teammates&rsquo; agents</li>
+            <li>Found the levers by reading the engine rather than guessing: service set to exactly the market-share cap, so no sales are lost and goods cost less; staff pay that rises as morale falls; a price cut only where rivals crowd in</li>
+            <li>On the organiser&rsquo;s battle site it <strong>finished 1st in both test lineups</strong>, including the one that beat my previous version into 3rd</li>
+            <li>Measured how much RL to apply instead of assuming more is better: 5k, 50k and 100k fine-tuning steps all did worse than 10k, so it shipped at 10k</li>
+          </ul>
+          <div class="stack-line">
+            <span>Python</span><span>Stable-Baselines3</span><span>A2C / PPO</span><span>Gymnasium</span><span>Imitation learning</span>
+          </div>
+          <a class="row-link" href="https://github.com/ABC-Maika/ABC-Agent" target="_blank" rel="noopener">View repository &rarr;</a>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">05</div>
+          <div class="row-when">2026</div>
+          <div class="row-kind">EDTH Sofia</div>
+        </div>
+        <div>
+          <h2 class="row-title">Multi-Sensor Fusion</h2>
+          <div class="row-sub">Common operational picture under electronic warfare &mdash; European Defence Tech Hub hackathon</div>
+          <ul class="row-points">
+            <li>Three-person team. The challenge: fuse noisy readings from low-cost drones and ground sensors, over jammed and lossy links, into <strong>one picture of hostile targets that never flags a friendly</strong></li>
+            <li>I owned the platform and the world: a scenario seeder backed by a <strong>PostgreSQL catalogue</strong> of platforms and sensors, where one JSON config plus a seed reproduces any run exactly</li>
+            <li>Separate tuning and test seed sets, so the tracker could never be tuned on the runs it was scored on, and eleven presets from easy to jammed, GNSS-denied and node outage</li>
+            <li>A <strong>browser simulation viewer in JavaScript</strong>: terrain, weather per detection, clutter, jamming zones, link caps and node health, with shared test cases the JavaScript and Python versions must answer identically</li>
+            <li>The team&rsquo;s own audit records which challenge criteria were met and which were not, rather than calling the prototype finished</li>
+          </ul>
+          <div class="stack-line">
+            <span>Python</span><span>JavaScript</span><span>PostgreSQL</span><span>pytest</span><span>Simulation</span>
+          </div>
+          <a class="row-link" href="https://github.com/BDN-Jonkata/EDTH-repo" target="_blank" rel="noopener">View repository &rarr;</a>
+        </div>
+      </article>
+
+      <article class="row reveal">
+        <div class="row-aside">
+          <div class="row-num">06</div>
           <div class="row-when">2025–26</div>
           <div class="row-kind">Team</div>
         </div>
@@ -628,7 +674,7 @@
 
       <article class="row reveal">
         <div class="row-aside">
-          <div class="row-num">05</div>
+          <div class="row-num">07</div>
           <div class="row-when">2025</div>
           <div class="row-kind">Nemetschek</div>
         </div>
@@ -649,7 +695,7 @@
 
       <article class="row reveal">
         <div class="row-aside">
-          <div class="row-num">06</div>
+          <div class="row-num">08</div>
           <div class="row-when">2025</div>
           <div class="row-kind">Personal</div>
         </div>
@@ -784,6 +830,10 @@
         <div class="kit-v"><b>Git &amp; PR review</b> · xUnit · pytest · Agile · Swagger/OpenAPI</div>
       </div>
       <div>
+        <div class="kit-k">Machine learning</div>
+        <div class="kit-v"><b>Stable-Baselines3</b> &middot; Gymnasium &middot; imitation learning (DAgger) &middot; pgvector &middot; Streamlit</div>
+      </div>
+      <div>
         <div class="kit-k">Also</div>
         <div class="kit-v">Unity · Stripe · Arduino · Visual Studio · VS Code</div>
       </div>
@@ -795,7 +845,7 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-title">Recognition</span>
-      <span class="sec-count">05</span>
+      <span class="sec-count">06</span>
     </div>
     <div class="awards reveal" data-stagger>
       <div class="award">
@@ -803,6 +853,12 @@
         <div class="award-rank">2nd place &mdash; team</div>
         <div class="award-what">Atanasov48 Hackathon</div>
         <div class="award-where">Oct 2026 &middot; prize included a summer internship</div>
+      </div>
+      <div class="award">
+        <div class="award-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l4-3 4 3 4-3 4 3v10"/><path d="M4 20h16"/><path d="M10 20v-4h4v4"/></svg></div>
+        <div class="award-rank">3rd place &mdash; team</div>
+        <div class="award-what">Retail-Simulation RL Hackathon</div>
+        <div class="award-where">Oct 2026 &middot; my agent was the final-round entry</div>
       </div>
       <div class="award">
         <div class="award-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4.5A2.5 2.5 0 0 0 7 9.5"/><path d="M17 6h2.5A2.5 2.5 0 0 1 17 9.5"/><path d="M12 14v3"/><path d="M8.5 20h7"/><path d="M10 17h4l.7 3h-5.4l.7-3Z"/></svg></div>
